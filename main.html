@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=h1, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=h1, initial-scale=1.0" />
     <title>GitHub Issue Tracker | Main Page</title>
 
     <link
@@ -26,10 +26,33 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Style -->
     <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-    hi
-</body>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="navbar bg-base-100 shadow-sm md:px-20">
+          <div class="flex items-center flex-1 gap-1">
+            <img class="w-9" src="./assets/github-logo.png" alt="">
+            <h2 class="text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+          </div>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search issues..."
+              class="input input-bordered w-24 md:w-auto"
+            />
+            <div>
+                <button class="btn btn-primary">+ New Issue</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </body>
 </html>
