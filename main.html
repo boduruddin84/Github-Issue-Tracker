@@ -54,19 +54,31 @@
         </div>
       </nav>
     </header>
-    <section class="w-[90%] md:w-[70%] mx-auto my-16">
+    <section class="w-[90%] md:w-[80%] mx-auto my-16">
         <div class="bg-[#FFFFFF] p-6 mb-4">
             <button id="all-btn" class="btn btn-primary md:px-[49px] md:py-3 font-semibold">All</button>
             <button class="btn md:px-[38px] md:py-3 font-medium">Open</button>
             <button class="btn md:px-[33px] md:py-3 font-medium">Closed</button>
         </div>
 
-        <div class="bg-[#FFFFFF]">
-            <div>
+        <div class="bg-[#FFFFFF] flex justify-between p-6">
+            <div class="flex gap-2">
                 <img src="./assets/Aperture.png" alt="">
                 <div>
-                    <h3>50 Issues</h3>
-                    <p>Track and manage your project issues</p>
+                    <h3 id="all-issues" class="text-[20px] text-[#1F2937] font-semibold">50 Issues</h3>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-[#00A96E]">
+                    </div>
+                    <p>Open</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-[#A855F7]">
+                    </div>
+                    <p>Closed</p>
                 </div>
             </div>
         </div>
