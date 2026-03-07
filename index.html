@@ -1,11 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issue Tracker</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/github-logo.png"
+      type="image/x-icon"
+    />
+
+    <!-- Tailwind + Daisy -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Style -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="min-h-screen max-w-md bg-base-200 mx-auto py-20">
+    <div
+      class="mt-8 w-11/12 mx-auto card bg-base-100 max-w-sm shrink shadow space-y-4 px-8 pt-8 "
+    >
+      <div class="flex justify-center">
+        <img src="./assets/github-logo.png" alt="" />
+      </div>
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+      <div class="card bg-base-100 w-full max-w-sm shrink shadow">
+        <div class="">
+          <fieldset class="fieldset space-y-4 pb-8">
+            <div>
+              <label class="label font-medium text-[1rem] text-[#1F2937]"
+                >Username</label
+              >
+              <input
+                id="input-number"
+                type="text"
+                class="input font-light text-[1rem] text-[#64748B] rounded-[8px] w-full py-4 pl-5 "
+                placeholder="Enter Username" value="admin"
+              />
+              <p class="text-[#4A00FF]">Default: admin</p>
+            </div>
+            <div>
+              <label class="label font-medium text-[1rem] text-[#1F2937]"
+                >Password</label
+              >
+              <input
+                id="input-pin"
+                type="password"
+                class="input font-light text-[1rem] text-[#64748B] rounded-[8px] w-full py-4 pl-5 bg-[#FFFFFF]"
+                placeholder="Enter Password"
+              />
+              <p class="text-[#4A00FF]">Default: admin123</p>
+            </div>
+            <button
+              id="login-btn"
+              class="btn btn-primary rounded-[8px] w-full mt-4"
+            >
+              Sign In
+            </button>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <script src="./login.js"></script>
+    <script src="./machine.js"></script>
+  </body>
 </html>
