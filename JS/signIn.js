@@ -5,7 +5,7 @@ const signInE = document.getElementById('sign-in-btn').addEventListener('click',
 
     if(username === 'admin' && password === 'admin123') {
         alert('Sign In Success');
-        window.location.assign("/main.html");
+        window.location.assign("./main.html");
     }
     
 })
