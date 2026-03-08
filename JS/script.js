@@ -7,10 +7,12 @@ async function loadIssues() {
 
 }
 
-const issuesContainer = document.getElementById("Issues-container");
-issuesContainer.innerHTML = " ";
+
 
 function displayIssues(issues) {
+    const issuesContainer = document.getElementById("Issues-container");
+    issuesContainer.innerHTML = "";
+    
     issues.forEach(issue => {
         const card = document.createElement("div");
 
@@ -23,7 +25,7 @@ function displayIssues(issues) {
         // }
 
         card.innerHTML = `
-        <div class="card bg-base-100 w-fit shadow-sm">
+        <div class="card bg-base-100 w-fit h-fit shadow-sm">
           <div class="card-body space-y-3">
             <div class="text-right">
                 <button class="btn rounded-full px-6 py-1.5">${issue.priority}</button>
@@ -74,6 +76,20 @@ const closeData = data.data.filter((issue) => issue.status === "closed");
 
 displayIssues(closeData);
 }
+
+
+// async function searchIssues(){
+
+// const text = getInput('search-issues');
+
+// const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`);
+
+// const data = await res.json();
+
+// displayIssues(data.data);
+
+// }
+
 
 
 
