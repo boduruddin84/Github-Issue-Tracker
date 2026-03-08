@@ -1,28 +1,32 @@
 const issuesCount = document.getElementById('issues-count');
+const loadingSpinner = document.getElementById('loading-spinner');
+const allButton = document.getElementById('all-btn');
+const openButton = document.getElementById('open-btn');
+const closedButton = document.getElementById('closed-btn');
+
+function showLoading() {
+    loadingSpinner.classList.remove("hidden");
+    issuesContainer.innerHTML = "";
+}
+function hideLoading() {
+    loadingSpinner.classList.add("hidden");
+}
 
 async function loadIssues() {
+    // showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json();
+    // hideLoading();
     displayIssues(data.data);
 
 }
 
 
-
 function displayIssues(issues) {
     const issuesContainer = document.getElementById("Issues-container");
     issuesContainer.innerHTML = "";
-    
     issues.forEach(issue => {
         const card = document.createElement("div");
-
-        // div.className = "issue-card";
-
-        // if(issue.status === "open"){
-        //     div.style.borderTop = "5px solid green";
-        // }else{
-        //     div.style.borderTop = "5px solid purple";
-        // }
 
         card.innerHTML = `
         <div class="card bg-base-100 w-fit h-fit shadow-sm">
@@ -55,13 +59,11 @@ function displayIssues(issues) {
 
 
 async function openIssues(){
-
+// showLoading();
 const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
-
 const data = await res.json();
-
+// hideLoading();
 const openData = data.data.filter((issue) => issue.status === "open");
-
 
 displayIssues(openData);
 
@@ -69,29 +71,41 @@ displayIssues(openData);
 
 
 async function closedIssues(){
-
+// showLoading();
 const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
 const data = await res.json();
+// hideLoading();
 const closeData = data.data.filter((issue) => issue.status === "closed");
 
 displayIssues(closeData);
 }
 
 
-// async function searchIssues(){
+function toggleStyle(id) {
+  allButton.classList.remove("btn-primary");
+  openButton.classList.remove("btn-primary");
+  closedButton.classList.remove("btn-primary");
 
-// const text = getInput('search-issues');
+  allButton.classList.add("btn-outline");
+  openButton.classList.add("btn-outline");
+  closedButton.classList.add("btn-outline");
 
-// const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`);
+  const selected = document.getElementById(id);
 
-// const data = await res.json();
+  selected.classList.remove("btn-outline");
+  selected.classList.add("btn-primary");
 
-// displayIssues(data.data);
+}
 
-// }
-
-
-
+allButton.addEventListener('click', function(){
+    loadIssues();
+})
+openButton.addEventListener('click', function(){
+    openIssues();
+})
+closedButton.addEventListener('click', function(){
+    closedIssues();
+})
 
 
 //       "id": 1,
