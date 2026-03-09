@@ -65,13 +65,15 @@
         >
           All
         </button>
-        <button id="open-btn"
+        <button
+          id="open-btn"
           onclick="toggleStyle('open-btn')"
           class="btn btn-outline md:px-[38px] md:py-3 font-medium"
         >
           Open
         </button>
-        <button id="closed-btn"
+        <button
+          id="closed-btn"
           onclick="toggleStyle('closed-btn')"
           class="btn btn-outline md:px-[33px] md:py-3 font-medium"
         >
@@ -108,14 +110,29 @@
         </div>
       </div>
 
-      <div id="Issues-container" class="grid grid-cols-1 md:grid-cols-4 gap-3">
-        
+      <div
+        id="Issues-container"
+        class="grid grid-cols-1 md:grid-cols-4 gap-3"
+      ></div>
+      <div
+        id="loading-spinner"
+        class="h-[60vh] hidden justify-center items-center"
+      >
+        <span class="loading loading-dots loading-xl"></span>
       </div>
-      <div id="loading-spinner" class="h-[60vh] hidden justify-center items-center">
-          <span class="loading loading-dots loading-xl"></span>
-      </div>
-    </section>
 
+      <!-- Open the modal using ID.showModal() method -->
+      <button class="btn" onclick="openModal(issue.id)">
+        open modal
+      </button>
+      <dialog
+        id="issues_details_modal"
+        class="modal modal-bottom sm:modal-middle"
+      >
+        
+          
+      </dialog>
+    </section>
 
     <script src="./JS/script.js"></script>
   </body>
