@@ -25,6 +25,14 @@ function displayIssues(issues) {
   const issuesContainer = document.getElementById("Issues-container");
   issuesContainer.innerHTML = "";
   issues.forEach((issue) => {
+
+    const labels = issue.labels
+      .map(
+        (label) =>
+          `<button class="text-[12px] px-2 label btn rounded-full bg-yellow-400">${label}</button>`,
+      )
+      .join("");
+
     const card = document.createElement("div");
 
     card.innerHTML = `
@@ -35,16 +43,15 @@ function displayIssues(issues) {
             </div>
             <h3 class="text-[#1F2937] font-semibold text-[14px]">${issue.title}</h3>
             <p class="text-[12px] text-[#64748B]">${issue.description}</p>
-            <div class="flex gap-1">
-                <button class="btn rounded-full bg-yellow-400">${issue.labels[0]}</button>
-                <button class="btn rounded-full bg-yellow-400">help wanted</button>
+            <div class="flex gap-1 ">
+                ${labels}
             </div>
             <hr class="text-gray-300">
             <div>
                 <p class="text-[#64748B]">#<span>${issue.id}</span> by <span>${issue.author}</span></p>
             </div>
             <div>
-                <p class="text-[#64748B]">${issue.createdAt}</p>
+                <p class="text-[#64748B]">${new Date(issue.createdAt).toLocaleDateString()}</p>
             </div>
           </div>
         </div>
@@ -121,10 +128,15 @@ async function openModal(id) {
   const res = await fetch(
     `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`,
   );
-
   const data = await res.json();
-
   const issue = data.data;
+
+  const labels = issue.labels
+      .map(
+        (label) =>
+          `<button class="text-[12px] px-2 label btn rounded-full bg-yellow-400">${label}</button>`,
+      )
+      .join("");
 
   const issueModal = document.getElementById("issues_details_modal");
 
@@ -132,43 +144,34 @@ async function openModal(id) {
         <div class="modal-box">
         <div class="space-y-6">
             <h2 class="font-bold text-2xl text-[#1F2937]">
-              Fix broken image uploads
+              ${issue.title}
             </h2>
             <div class="flex items-center gap-2">
               <button
                 class="btn rounded-full text-[12px] font-medium text-[#64748B]"
               >
-                Opened
+                ${issue.status}
               </button>
               <p class="text-[12px] text-[#64748B]">
-                <span>Opened</span> by <span>Fahim Ahmed</span>
+                <span>${issue.status}</span> by <span>${issue.author}</span>
               </p>
-              <p class="text-[12px] text-[#64748B]">22/02/2026</p>
+              <p class="text-[12px] text-[#64748B]">${new Date(issue.createdAt).toLocaleDateString()}</p>
             </div>
-            <div class="flex gap-2">
-              <button
-                class="btn rounded-full text-[12px] font-medium bg-yellow-400"
-              >
-                Bug
-              </button>
-              <button
-                class="btn rounded-full text-[12px] font-medium bg-yellow-400"
-              >
-                help wanted
-              </button>
+            <div class="flex gap-1">
+                ${labels}
             </div>
             <p class="text-[#64748B]">
-              The navigation menu doesn't collapse properly on mobile devices.
+              ${issue.description}
               Need to fix the responsive behavior.
             </p>
             <div class="flex gap-20">
               <div>
                 <p>Assignee:</p>
-                <h3 class="text-[#1F2937] font-semibold">Fahim Ahmed</h3>
+                <h3 class="text-[#1F2937] font-semibold">${issue.assignee}</h3>
               </div>
               <div>
                 <p>Priority:</p>
-                <button class="btn rounded-full">High</button>
+                <button class="btn rounded-full">${issue.priority}</button>
               </div>
               <div></div>
             </div>
